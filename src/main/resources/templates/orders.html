@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    table {
+        width:100%;
+    }
+    table tr td {
+        height : auto;
+    }
+</style>
+<script>
+    setInterval(function(){window.location.reload(true)},1000);
+</script>
+
+<body>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Jméno</th>
+            <th>Adresa</th>
+            <th>Datum</th>
+            <th>Objednávka</th>
+            <th>Stav</th>
+            <th>Připraveno</th>
+            <th>Doručeno</th>
+        </tr>
+        <tr th:each="order : ${order_list}">
+            <td th:text="${order.id}"></td>
+            <td th:text="${order.name}"></td>
+            <td th:text="${order.address}"></td>
+            <td th:text="${order.date}"></td>
+            <td th:text="${order.pizzas}"></td>
+            <td th:text="${order.state}"></td>
+            <td>
+                <a th:href="@{'/prepared/'+${order.id}}">
+                <input  type="button" value="Připraveno"/>
+                </a>
+            </td>
+            <td>
+                <a th:href="@{'/delivered/'+${order.id}}">
+                <input type="button" value="Doručeno"/>
+                </a>
+            </td>
+        </tr>
+
+
+
+    </table>
+    <a href="/" method="get">
+        <input type="button" value="Main"/>
+    </a>
+
+
+
+
+</body>
+
+</html>

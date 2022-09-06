@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+<body>
+<h1>Cart</h1>
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Amount</th>
+        </tr>
+        <tr th:each="element : ${cart}">
+            <td th:text="${element.key}">
+            <td th:text="${element.value}">
+        </tr>
+    </table>
+
+<a href="/" method="get">
+    <input type="button" value="Main"/>
+</a>
+
+<div style="text-align: right;">
+    <form action="#" th:action="@{/order_made}" th:object="${form}" method="post">
+        <label>Jméno</label>
+        <input type="text" th:field="*{name}"></input>
+        <label>Adresa</label>
+        <input type="text" th:field="*{address}"></input>
+        <input type="submit" value="Potvrdit"></input>
+    </form>
+</div>
+
+
+
+
+
+</body>
+</html>

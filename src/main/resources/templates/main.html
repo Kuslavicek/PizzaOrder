@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 th:text="Nabídka"></h1>
+<div th:each="pizza : ${pizzas}">
+    <img th:src="${pizza.image_path}", width="300" height="200">
+    <h5 th:text="${pizza.type}"></h5>
+    <a th:href="@{'/cart-remove/'+${pizza.id}}">-</a>
+    <a th:href="@{'/cart-add/'+${pizza.id}}">+</a>
+</div>
+
+<a href="/cart" method="get">
+    <input type="button" value="Košík"/>
+</a>
+
+<a href="/orders" method="get">
+    <input type="button" value="Objednávky"/>
+</a>
+
+</body>
+</html>
